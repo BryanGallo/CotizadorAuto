@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { CotizadorProvider } from "./context/CotizadorProvider";
 import AppSeguro from "./components/AppSeguro";
 function App() {
     const [count, setCount] = useState(0);
 
     return (
-        
-            <div>
-                <AppSeguro />
-            </div>
+        <CotizadorProvider>
+            <AppSeguro />
+        </CotizadorProvider>
     );
 }
 
