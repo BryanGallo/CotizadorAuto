@@ -1,13 +1,12 @@
 import { useState } from "react";
-import viteLogo from "/vite.svg";
-
+import AppSeguro from "./components/AppSeguro";
 function App() {
     const [count, setCount] = useState(0);
 
     return (
         
             <div>
-                <h1>Cotizador de autos</h1>
+                <AppSeguro />
             </div>
     );
 }
