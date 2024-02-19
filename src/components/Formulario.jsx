@@ -3,10 +3,14 @@ import { MARCAS, YEARS, PLANES } from "../constants/index";
 import useCotizador from "../hooks/useCotizador";
 
 const Formulario = () => {
-    const {} = useCotizador();
+    const { handleChangeDatos, datos } = useCotizador();
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        alert("Enviando Formulario");
+    };
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="my-5">
                     <label
                         htmlFor="nombre"
@@ -17,6 +21,8 @@ const Formulario = () => {
                     <select
                         name="marca"
                         className="w-full p-3 bg-white border border-gray-200"
+                        onChange={(e) => handleChangeDatos(e)}
+                        value={datos.marca}
                     >
                         <option value=""> -- Selecciona Marca --</option>
                         {MARCAS.map((marca) => {
@@ -30,14 +36,16 @@ const Formulario = () => {
                 </div>
                 <div className="my-5">
                     <label
-                        htmlFor="nombre"
+                        htmlFor="year"
                         className="block mb-3 font-bold text-gray-400 uppercase"
                     >
                         Año
                     </label>
                     <select
-                        name="anio"
+                        name="year"
                         className="w-full p-3 bg-white border border-gray-200"
+                        onChange={(e) => handleChangeDatos(e)}
+                        value={datos.year}
                     >
                         <option value=""> -- Selecciona Año --</option>
                         {YEARS.map((year) => {
@@ -51,7 +59,7 @@ const Formulario = () => {
                 </div>
                 <div className="my-5">
                     <label
-                        htmlFor="nombre"
+                        htmlFor="plan"
                         className="block mb-3 font-bold text-gray-400 uppercase"
                     >
                         Elige un plan
@@ -65,6 +73,7 @@ const Formulario = () => {
                                         type="radio"
                                         name="plan"
                                         value={plan.id}
+                                        onChange={(e) => handleChangeDatos(e)}
                                     />
                                 </Fragment>
                             );
