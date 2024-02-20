@@ -7,13 +7,17 @@ const CotizadorProvider = ({ children }) => {
         year: "",
         plan: "",
     });
+    const [error, setError] = useState("");
     const handleChangeDatos = (e) => {
         console.log(e.target.name);
         console.log(e.target.value);
         setDatos({ ...datos, [e.target.name]: e.target.value });
     };
+
     return (
-        <CotizadorContext.Provider value={{ handleChangeDatos, datos }}>
+        <CotizadorContext.Provider
+            value={{ handleChangeDatos, datos, error, setError }}
+        >
             {children}
         </CotizadorContext.Provider>
     );
